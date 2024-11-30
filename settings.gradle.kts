@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "EntainTechAssessment"
 include(":app")
- 
+include(":feature:racing")
+include(":data:racing")
+include(":core:network")
