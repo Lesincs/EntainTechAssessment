@@ -8,5 +8,10 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun RacingRoute(modifier: Modifier = Modifier) {
-    Text(text = "RacingRoute", modifier = modifier.fillMaxSize().wrapContentSize())
+    Text(
+        text = "RacingRoute",
+        modifier = modifier
+            .fillMaxSize()
+            .wrapContentSize()
+    )
 }
