@@ -32,4 +32,5 @@ dependencies {
     testImplementation(libs.kotest.assertions)
     testImplementation(libs.kotinx.courtines.test)
     testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
 }
