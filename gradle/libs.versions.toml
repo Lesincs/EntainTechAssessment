@@ -14,6 +14,11 @@ jetbrainsKotlinJvm = "1.9.0"
 ktor = "3.0.0-rc-1"
 hilt-android = "2.49"
 timber = "5.0.1"
+kotlin-serialization = "1.7.2"
+kotlin-serialization-plugin = "2.0.0"
+mockk = "1.13.12"
+kotest-assertion = "5.8.1"
+kotlin-coroutines = "1.8.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +44,10 @@ ktor-mock = { group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor"
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-android" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-android" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest-assertion" }
+kotinx-courtines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -56,6 +65,7 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 android-detekt = { id = "com.lesincs.entaintechassessment.detekt", version = "1.0.0" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization-plugin" }
 
 [bundles]
 ktor-client = ["ktor-cio", "ktor-serialization", "ktor-logging", "ktor-content-negotiation", "ktor-client-encoding"]

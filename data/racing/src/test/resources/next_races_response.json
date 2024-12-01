@@ -1,0 +1,89 @@
+{
+  "status": 200,
+  "data": {
+    "next_to_go_ids": [
+      "fbadd808-430d-4e5b-9734-da07665cc0f6",
+      "e91170b7-ae24-46c1-9b8e-f1d001ecd567"
+    ],
+    "race_summaries": {
+      "e91170b7-ae24-46c1-9b8e-f1d001ecd567": {
+        "race_id": "e91170b7-ae24-46c1-9b8e-f1d001ecd567",
+        "race_name": "Happy Hire Cromwell Cup",
+        "race_number": 6,
+        "meeting_id": "044319ac-f363-4f5e-8dd3-3683102fb707",
+        "meeting_name": "Cromwell",
+        "category_id": "4a2788f8-e825-4d36-9894-efd4baf1cfae",
+        "advertised_start": {
+          "seconds": 1733019300
+        },
+        "race_form": {
+          "distance": 2030,
+          "distance_type": {
+            "id": "570775ae-09ec-42d5-989d-7c8f06366aa7",
+            "name": "Metres",
+            "short_name": "m"
+          },
+          "distance_type_id": "570775ae-09ec-42d5-989d-7c8f06366aa7",
+          "track_condition": {
+            "id": "908a410f-ab10-11e7-85e3-0641c90711b8",
+            "name": "Good3",
+            "short_name": "good3"
+          },
+          "track_condition_id": "908a410f-ab10-11e7-85e3-0641c90711b8",
+          "weather": {
+            "id": "08e5f78c-1a36-11eb-9269-cef03e67f1a3",
+            "name": "FINE",
+            "short_name": "fine",
+            "icon_uri": "FINE"
+          },
+          "weather_id": "08e5f78c-1a36-11eb-9269-cef03e67f1a3",
+          "race_comment": "JON OL ROCCO (2) is a win chance here for sure. Up 4kg but he can cope in this field. He has been course placed. No negatives in this line up whatsoever. BURGIE (3) is a multiple class dropper in this field. She ran a better race at last start. Chance from the ace in this for sure. IN VEGAS (4) is racing super for a while now. She is course proven. Trifecta and first four must in this for certain. NOBLE KNIGHT (5) is a multiple class dropper here and he drops back 1170m as well. He is a chance still for sure in this. MONTE CIVETTA (11) is a multiple class rise in this. He can handle dry and wet footing.",
+          "additional_data": "{\"revealed_race_info\":{\"track_name\":\"Cromwell\",\"state\":\"NZ\",\"country\":\"NZ\",\"number\":6,\"race_name\":\"Happy Hire Cromwell Cup\",\"time\":\"2024-12-01T02:15:00Z\",\"class\":\"CUP\",\"start_type\":\"\",\"prizemonies\":{\"1st\":28750,\"2nd\":9250,\"3rd\":4500,\"4th\":2500,\"5th\":1250,\"6th-10th\":750,\"total_value\":45455},\"localised_prizemonies\":{\"AUD\":{\"10th\":682,\"1st\":26136,\"2nd\":8409,\"3rd\":4091,\"4th\":2273,\"5th\":1136,\"6th\":682,\"7th\":682,\"8th\":682,\"9th\":682,\"total_value\":45455},\"NZD\":{\"10th\":750,\"1st\":28750,\"2nd\":9250,\"3rd\":4500,\"4th\":2500,\"5th\":1250,\"6th\":750,\"6th-10th\":750,\"7th\":750,\"8th\":750,\"9th\":750,\"total_value\":50000}},\"rail_position\":\"True\",\"track_direction\":\"Left\",\"track_surface\":\"Turf\",\"group\":\"\",\"gait\":\"Gallop\",\"track_home_straight_metres\":350,\"track_circumference\":0}}",
+          "generated": 1,
+          "silk_base_url": "drr38safykj6s.cloudfront.net",
+          "race_comment_alternative": "JON OL ROCCO (2) is a win chance here for sure. Up 4kg but he can cope in this field. He has been course placed. No negatives in this line up whatsoever. BURGIE (3) is a multiple class dropper in this field. She ran a better race at last start. Chance from the ace in this for sure. IN VEGAS (4) is racing super for a while now. She is course proven. Trifecta and first four must in this for certain. NOBLE KNIGHT (5) is a multiple class dropper here and he drops back 1170m as well. He is a chance still for sure in this. MONTE CIVETTA (11) is a multiple class rise in this. He can handle dry and wet footing."
+        },
+        "venue_id": "b0661765-d587-4b19-ad0c-09c711f9cfce",
+        "venue_name": "Cromwell",
+        "venue_state": "NZ",
+        "venue_country": "NZ"
+      },
+      "fbadd808-430d-4e5b-9734-da07665cc0f6": {
+        "race_id": "fbadd808-430d-4e5b-9734-da07665cc0f6",
+        "race_name": "Race 6 - 1609M",
+        "race_number": 6,
+        "meeting_id": "e8de4f94-9495-4cfa-ab73-0f720044d2fa",
+        "meeting_name": "Woodbine Mohawk Park",
+        "category_id": "161d9be2-e909-4326-8c2c-35ed71fb460b",
+        "advertised_start": {
+          "seconds": 1733019300
+        },
+        "race_form": {
+          "distance": 1609,
+          "distance_type": {
+            "id": "570775ae-09ec-42d5-989d-7c8f06366aa7",
+            "name": "Metres",
+            "short_name": "m"
+          },
+          "distance_type_id": "570775ae-09ec-42d5-989d-7c8f06366aa7",
+          "track_condition": {
+            "id": "10a14653-a33d-11e7-810d-0a1a4ae29bd2",
+            "name": "Good",
+            "short_name": "good"
+          },
+          "track_condition_id": "10a14653-a33d-11e7-810d-0a1a4ae29bd2",
+          "race_comment": "TRION DE VIE (5) has recorded two wins and two minor placings from the past five starts. Didn't let supporters down at his latest appearance when he got the job done by 2 metres over 1609m at this track. Meets a comparable field and he can get the job done again. BAYFIELD BEACH (1) finished runner-up at his most recent outing, beaten one metre, in a nice return to form at this track over 1609m. Sure to enjoy an economical run from this draw. Won't find this any harder and he can go one better without surprising. BATTERUP HANOVER (3) is flying at present with two successive wins to his name, most recently at Flamboro Downs a week-and-a-half ago. Big chance to keep the ball rolling. BETTER SUNSET (2) is close to a win after two successive placings, the latest a second over 1609m at this track.",
+          "additional_data": "{\"revealed_race_info\":{\"track_name\":\"Woodbine Mohawk Park\",\"state\":\"ON\",\"country\":\"CA\",\"number\":6,\"race_name\":\"Race 6 - 1609M\",\"time\":\"2024-12-01T02:15:00Z\",\"class\":\"\",\"start_type\":\"Mobile\",\"prizemonies\":{\"total_value\":13129},\"localised_prizemonies\":{\"AUD\":{\"total_value\":13129},\"NZD\":{\"total_value\":14442}},\"rail_position\":\"\",\"track_direction\":\"Left\",\"track_surface\":\"All Weather\",\"group\":\"\",\"gait\":\"P\",\"track_home_straight_metres\":0,\"track_circumference\":0}}",
+          "generated": 1,
+          "silk_base_url": "drr38safykj6s.cloudfront.net",
+          "race_comment_alternative": "TRION DE VIE (5) has recorded two wins and two minor placings from the past five starts. Didn't let supporters down at his latest appearance when he got the job done by 2 metres over 1609m at this track. Meets a comparable field and he can get the job done again. BAYFIELD BEACH (1) finished runner-up at his most recent outing, beaten one metre, in a nice return to form at this track over 1609m. Sure to enjoy an economical run from this draw. Won't find this any harder and he can go one better without surprising. BATTERUP HANOVER (3) is flying at present with two successive wins to his name, most recently at Flamboro Downs a week-and-a-half ago. Big chance to keep the ball rolling. BETTER SUNSET (2) is close to a win after two successive placings, the latest a second over 1609m at this track."
+        },
+        "venue_id": "faf126e6-2146-4576-924c-930edcde0902",
+        "venue_name": "Woodbine Mohawk Park",
+        "venue_state": "ON",
+        "venue_country": "CA"
+      }
+    }
+  },
+  "message": "Next 10 races from each category"
+}

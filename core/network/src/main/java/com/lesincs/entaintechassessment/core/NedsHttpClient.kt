@@ -14,7 +14,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import timber.log.Timber
 
-private const val NEDS_API_BASE_URL = "https://api.neds.com.au/rest/v1/racing/"
+private const val NEDS_API_BASE_URL = "https://api.neds.com.au/rest/v1/"
 
 internal fun getNedsHttpClient(): HttpClient = HttpClient(CIO) {
     install(ContentNegotiation) {
