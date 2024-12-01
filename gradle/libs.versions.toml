@@ -20,6 +20,7 @@ mockk = "1.13.12"
 kotest-assertion = "5.8.1"
 kotlin-coroutines = "1.8.1"
 turbine = "1.1.0"
+material-icon-extended = "1.7.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,6 +51,7 @@ mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest-assertion" }
 kotinx-courtines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+material-icon-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "material-icon-extended" }
 
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
