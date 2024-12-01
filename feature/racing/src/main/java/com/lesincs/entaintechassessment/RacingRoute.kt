@@ -1,10 +1,13 @@
 package com.lesincs.entaintechassessment
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterAlt
 import androidx.compose.material.icons.filled.FilterAltOff
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -14,6 +17,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,16 +31,21 @@ import androidx.compose.ui.util.fastForEach
 @Composable
 fun RacingRoute(modifier: Modifier = Modifier) {
     NextRacesScreen(
-        racesUiState = NextRacesUiState(emptyList(), emptyList()),
+        nextRacesUiState = NextRacesUiState(
+            racesListState = RacesListState.Loading,
+            selectedCategoryIds = emptyList()
+        ),
         onSelectedCategoryIdsApply = {},
+        reloadRaces = {},
         modifier = modifier
     )
 }
 
 @Composable
 internal fun NextRacesScreen(
-    racesUiState: NextRacesUiState,
+    nextRacesUiState: NextRacesUiState,
     onSelectedCategoryIdsApply: (List<String>) -> Unit,
+    reloadRaces: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var showFilterDialog by remember { mutableStateOf(false) }
@@ -44,26 +53,53 @@ internal fun NextRacesScreen(
         modifier = modifier,
         topBar = {
             NextRaceAppBar(
-                selectedCategoryIds = racesUiState.selectedCategoryIds,
+                selectedCategoryIds = nextRacesUiState.selectedCategoryIds,
                 onFilterClick = { showFilterDialog = true }
             )
         },
     ) { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
             HorizontalDivider()
-            racesUiState.races.fastForEach { race ->
-                RaceSummaryItem(race)
-                HorizontalDivider()
+            when (val racesListState = nextRacesUiState.racesListState) {
+                RacesListState.Error -> Error(retry = reloadRaces)
+                RacesListState.Loading -> Loading()
+                is RacesListState.Success -> {
+                    racesListState.races.fastForEach { race ->
+                        RaceSummaryItem(race)
+                        HorizontalDivider()
+                    }
+                }
             }
         }
     }
 
     if (showFilterDialog) {
         CategoryFilterDialog(
-            selectedCategoryIds = racesUiState.selectedCategoryIds,
+            selectedCategoryIds = nextRacesUiState.selectedCategoryIds,
             onSelectedCategoryIdsApply = onSelectedCategoryIdsApply,
             onDismissDialog = { showFilterDialog = false },
         )
+    }
+}
+
+@Composable
+private fun Loading(modifier: Modifier = Modifier) {
+    CircularProgressIndicator(
+        modifier = modifier
+            .fillMaxSize()
+            .wrapContentSize()
+    )
+}
+
+@Composable
+private fun Error(modifier: Modifier = Modifier, retry: () -> Unit) {
+    TextButton(
+        onClick = retry,
+        modifier = modifier
+            .fillMaxSize()
+            .wrapContentSize()
+    ) {
+        Text(stringResource(R.string.load_failed_click_to_retry))
     }
 }
 
@@ -105,29 +141,62 @@ private fun RaceSummaryItem(race: RaceSummaryUiItem) {
 
 @Preview
 @Composable
-private fun NextRacesScreenPreview() {
+private fun NextRacesScreenPreview_SUCCESS() {
     MaterialTheme {
         NextRacesScreen(
-            racesUiState = NextRacesUiState(
-                races = listOf(
-                    RaceSummaryUiItem(
-                        raceId = "e91170b7-ae24-46c1-9b8e-f1d001ecd567",
-                        raceNumber = "R2",
-                        meetingName = "Cromwell",
-                        countdownTime = "50s",
-                        raceName = "Happy Hire Cromwell Cup"
-                    ),
-                    RaceSummaryUiItem(
-                        raceId = "fbadd808-430d-4e5b-9734-da07665cc0f6",
-                        raceNumber = "R6",
-                        meetingName = "Woodbine Mohawk Park",
-                        countdownTime = "1m 20s",
-                        raceName = "Race 6 - 1609M"
+            nextRacesUiState = NextRacesUiState(
+                racesListState = RacesListState.Success(
+                    listOf(
+                        RaceSummaryUiItem(
+                            raceId = "e91170b7-ae24-46c1-9b8e-f1d001ecd567",
+                            raceNumber = "R2",
+                            meetingName = "Cromwell",
+                            countdownTime = "50s",
+                            raceName = "Happy Hire Cromwell Cup"
+                        ),
+                        RaceSummaryUiItem(
+                            raceId = "fbadd808-430d-4e5b-9734-da07665cc0f6",
+                            raceNumber = "R6",
+                            meetingName = "Woodbine Mohawk Park",
+                            countdownTime = "1m 20s",
+                            raceName = "Race 6 - 1609M"
+                        )
                     )
                 ),
                 selectedCategoryIds = emptyList(),
             ),
-            onSelectedCategoryIdsApply = {}
+            onSelectedCategoryIdsApply = {},
+            reloadRaces = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun NextRacesScreenPreview_LOADING() {
+    MaterialTheme {
+        NextRacesScreen(
+            nextRacesUiState = NextRacesUiState(
+                racesListState = RacesListState.Loading,
+                selectedCategoryIds = emptyList(),
+            ),
+            onSelectedCategoryIdsApply = {},
+            reloadRaces = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun NextRacesScreenPreview_ERROR() {
+    MaterialTheme {
+        NextRacesScreen(
+            nextRacesUiState = NextRacesUiState(
+                racesListState = RacesListState.Error,
+                selectedCategoryIds = emptyList(),
+            ),
+            onSelectedCategoryIdsApply = {},
+            reloadRaces = {}
         )
     }
 }
