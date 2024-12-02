@@ -129,19 +129,18 @@ class NextRacesVieModel @Inject constructor(
         raceSummaries: List<RaceSummary>,
         selectedCategoryIds: List<String>,
         currentTimeSeconds: Long
-    ): List<RaceSummaryUiItem> {
-        val sortedValidRaces = raceSummaries.filterNot { raceSummary ->
+    ): List<RaceSummaryUiItem> = raceSummaries
+        .asSequence()
+        .filterNot { raceSummary ->
             val racePastSeconds = currentTimeSeconds - raceSummary.advertisedStartSeconds
             racePastSeconds > RACE_OBSOLETE_SECONDS
-        }.sortedBy { it.advertisedStartSeconds }
-
-        val filteredRaces = if (selectedCategoryIds.isEmpty()) {
-            sortedValidRaces.take(MAXIMUM_RACE_DISPLAY_COUNT_FOR_ALL_CATEGORY)
-        } else {
-            sortedValidRaces.filter { raceSummary -> raceSummary.categoryId in selectedCategoryIds }
         }
-
-        return filteredRaces.map { raceSummary ->
+        .filter { raceSummary ->
+            selectedCategoryIds.isEmpty() || raceSummary.categoryId in selectedCategoryIds
+        }
+        .sortedBy { raceSummary -> raceSummary.advertisedStartSeconds }
+        .take(MAXIMUM_RACE_DISPLAY_COUNT)
+        .map { raceSummary ->
             val countdownTimeSeconds = raceSummary.advertisedStartSeconds - currentTimeSeconds
             val countdownTime = countdownSecondsFormatter.format(countdownTimeSeconds)
             RaceSummaryUiItem(
@@ -152,13 +151,12 @@ class NextRacesVieModel @Inject constructor(
                 countdownTime = countdownTime,
                 category = Category.entries.firstOrNull { it.id == raceSummary.categoryId }
             )
-        }
-    }
+        }.toList()
 
     companion object {
         private const val NEXT_RACES_REFRESH_DELAY_MILLIS = 60_000L
         private const val CURRENT_TIME_SYNC_DELAY_MILLIS = 1_000L
-        private const val MAXIMUM_RACE_DISPLAY_COUNT_FOR_ALL_CATEGORY = 5
+        private const val MAXIMUM_RACE_DISPLAY_COUNT = 5
         private const val RACE_OBSOLETE_SECONDS = 60
         private const val STOP_TIMEOUT_MILLIS = 5_000L
     }

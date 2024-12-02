@@ -269,7 +269,6 @@ class NextRacesVieModelTest {
                     "007",
                     "008",
                     "009",
-                    "010"
                 )
             }
         }
