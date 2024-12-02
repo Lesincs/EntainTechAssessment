@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterAlt
 import androidx.compose.material.icons.filled.FilterAltOff
@@ -78,9 +80,11 @@ internal fun NextRacesScreen(
                     if (racesListState.races.isEmpty()) {
                         Empty()
                     } else {
-                        racesListState.races.fastForEach { race ->
-                            RaceSummaryItem(race)
-                            HorizontalDivider()
+                        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                            racesListState.races.fastForEach { race ->
+                                RaceSummaryItem(race)
+                                HorizontalDivider()
+                            }
                         }
                     }
                 }
@@ -174,7 +178,7 @@ private fun RaceSummaryItem(race: RaceSummaryUiItem) {
     ListItem(
         leadingContent = { Text(race.raceNumber) },
         headlineContent = { Text(race.meetingName) },
-        trailingContent = { Text(race.countdownTime) },
+        trailingContent = { Text(text = race.countdownTime, color = Color(color = 0xFFC02A2B)) },
         supportingContent = { Text(race.raceName) },
     )
 }

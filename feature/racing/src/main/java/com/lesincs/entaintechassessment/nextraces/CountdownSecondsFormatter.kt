@@ -15,8 +15,11 @@ class CountdownSecondsFormatter @Inject constructor() {
 
             if (minutes != 0L) append("${minutes}m")
 
-            if (minutes == 0L || seconds != 0L) {
-                if (minutes != 0L) append(" ")
+            if (minutes != 0L) {
+                append(" ")
+                val twoDigitsSeconds = seconds.toString().padStart(2, '0')
+                append("${twoDigitsSeconds}s")
+            } else {
                 append("${seconds}s")
             }
         }
