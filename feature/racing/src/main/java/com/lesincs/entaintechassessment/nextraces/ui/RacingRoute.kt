@@ -38,7 +38,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.min
 import androidx.compose.ui.util.fastForEach
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -46,8 +45,8 @@ import com.lesincs.entaintechassessment.R
 import com.lesincs.entaintechassessment.nextraces.Category
 import com.lesincs.entaintechassessment.nextraces.NextRacesUiState
 import com.lesincs.entaintechassessment.nextraces.NextRacesVieModel
+import com.lesincs.entaintechassessment.nextraces.RaceListState
 import com.lesincs.entaintechassessment.nextraces.RaceSummaryUiItem
-import com.lesincs.entaintechassessment.nextraces.RacesListState
 
 @Composable
 fun RacingRoute(modifier: Modifier = Modifier) {
@@ -82,10 +81,10 @@ internal fun NextRacesScreen(
     ) { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
             HorizontalDivider()
-            when (val racesListState = nextRacesUiState.racesListState) {
-                RacesListState.Error -> Error(retry = reloadRaces)
-                RacesListState.Loading -> Loading()
-                is RacesListState.Success -> {
+            when (val racesListState = nextRacesUiState.raceListState) {
+                RaceListState.Error -> Error(retry = reloadRaces)
+                RaceListState.Loading -> Loading()
+                is RaceListState.Success -> {
                     if (racesListState.races.isEmpty()) {
                         Empty()
                     } else {
@@ -215,7 +214,7 @@ private fun NextRacesScreenPreview_SUCCESS() {
     MaterialTheme {
         NextRacesScreen(
             nextRacesUiState = NextRacesUiState(
-                racesListState = RacesListState.Success(
+                raceListState = RaceListState.Success(
                     listOf(
                         RaceSummaryUiItem(
                             raceId = "e91170b7-ae24-46c1-9b8e-f1d001ecd567",
@@ -249,7 +248,7 @@ private fun NextRacesScreenPreview_LOADING() {
     MaterialTheme {
         NextRacesScreen(
             nextRacesUiState = NextRacesUiState(
-                racesListState = RacesListState.Loading,
+                raceListState = RaceListState.Loading,
                 selectedCategoryIds = emptyList(),
             ),
             onSelectedCategoryIdsApply = {},
@@ -264,7 +263,7 @@ private fun NextRacesScreenPreview_ERROR() {
     MaterialTheme {
         NextRacesScreen(
             nextRacesUiState = NextRacesUiState(
-                racesListState = RacesListState.Error,
+                raceListState = RaceListState.Error,
                 selectedCategoryIds = emptyList(),
             ),
             onSelectedCategoryIdsApply = {},

@@ -3,7 +3,7 @@ package com.lesincs.entaintechassessment.nextraces
 import javax.inject.Inject
 import kotlin.math.abs
 
-class CountdownSecondsFormatter @Inject constructor() {
+internal class CountdownSecondsFormatter @Inject constructor() {
 
     fun format(countdownSeconds: Long): String {
         val minutes = abs(countdownSeconds) / SECONDS_PER_MINUTE

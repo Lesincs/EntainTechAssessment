@@ -2,7 +2,7 @@ package com.lesincs.entaintechassessment.nextraces
 
 import javax.inject.Inject
 
-class CurrentTimeSecondsProvider @Inject constructor() {
+internal class CurrentTimeSecondsProvider @Inject constructor() {
 
     fun provide(): Long {
         return System.currentTimeMillis() / MILLISECONDS_PER_SECOND

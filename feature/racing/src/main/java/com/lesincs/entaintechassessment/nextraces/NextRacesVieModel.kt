@@ -22,7 +22,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class NextRacesVieModel @Inject constructor(
+internal class NextRacesVieModel @Inject constructor(
     private val nextRacesRepository: NextRacesRepository,
     private val currentTimeSecondsProvider: CurrentTimeSecondsProvider,
     private val countdownSecondsFormatter: CountdownSecondsFormatter,
@@ -67,7 +67,7 @@ class NextRacesVieModel @Inject constructor(
         viewModelScope.launch(updateNextRacesDispatcher) {
             // Update next races only if loaded and a minute has passed.
             nextRacesUiStateFlow
-                .map { it.racesListState is RacesListState.Success }
+                .map { it.raceListState is RaceListState.Success }
                 .distinctUntilChanged()
                 .collectLatest { loadedRacesSucceed ->
                     if (loadedRacesSucceed) {
@@ -93,13 +93,13 @@ class NextRacesVieModel @Inject constructor(
         )
         NextRacesUiState(
             selectedCategoryIds = selectedCategoryIds,
-            racesListState = racesListState,
+            raceListState = racesListState,
         )
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS),
         initialValue = NextRacesUiState(
-            racesListState = RacesListState.Loading,
+            raceListState = RaceListState.Loading,
             selectedCategoryIds = emptyList(),
         )
     )
@@ -110,9 +110,9 @@ class NextRacesVieModel @Inject constructor(
         selectedCategoryIds: List<String>,
         currentSeconds: Long
     ) = when (loadingStatus) {
-        LoadingStatus.LOADING -> RacesListState.Loading
-        LoadingStatus.FAILED -> RacesListState.Error
-        LoadingStatus.SUCCESS -> RacesListState.Success(
+        LoadingStatus.LOADING -> RaceListState.Loading
+        LoadingStatus.FAILED -> RaceListState.Error
+        LoadingStatus.SUCCESS -> RaceListState.Success(
             getRaceSummaryUiItems(
                 raceSummaries = raceSummaries,
                 selectedCategoryIds = selectedCategoryIds,

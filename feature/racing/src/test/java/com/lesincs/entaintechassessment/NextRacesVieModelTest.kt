@@ -7,8 +7,8 @@ import com.lesincs.entaintechassessment.nextraces.Category
 import com.lesincs.entaintechassessment.nextraces.CountdownSecondsFormatter
 import com.lesincs.entaintechassessment.nextraces.CurrentTimeSecondsProvider
 import com.lesincs.entaintechassessment.nextraces.NextRacesVieModel
+import com.lesincs.entaintechassessment.nextraces.RaceListState
 import com.lesincs.entaintechassessment.nextraces.RaceSummaryUiItem
-import com.lesincs.entaintechassessment.nextraces.RacesListState
 import com.lesincs.entaintechassessment.util.MainDispatcherRule
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -72,8 +72,8 @@ class NextRacesVieModelTest {
             constructSut()
 
             sut.nextRacesUiStateFlow.test {
-                val racesListState = awaitItem().racesListState
-                racesListState.shouldBeInstanceOf<RacesListState.Success>()
+                val racesListState = awaitItem().raceListState
+                racesListState.shouldBeInstanceOf<RaceListState.Success>()
                 racesListState.races shouldBe listOf(
                     RaceSummaryUiItem(
                         raceId = "e91170b7-ae24-46c1-9b8e-f1d001ecd567",
@@ -115,8 +115,8 @@ class NextRacesVieModelTest {
             constructSut()
 
             sut.nextRacesUiStateFlow.test {
-                val racesListState = awaitItem().racesListState
-                racesListState.shouldBeInstanceOf<RacesListState.Success>()
+                val racesListState = awaitItem().raceListState
+                racesListState.shouldBeInstanceOf<RaceListState.Success>()
                 racesListState.races.map { it.raceId } shouldBe listOf("001", "003", "002", "004")
             }
         }
@@ -147,8 +147,8 @@ class NextRacesVieModelTest {
             constructSut()
 
             sut.nextRacesUiStateFlow.test {
-                val racesListState = awaitItem().racesListState
-                racesListState.shouldBeInstanceOf<RacesListState.Success>()
+                val racesListState = awaitItem().raceListState
+                racesListState.shouldBeInstanceOf<RaceListState.Success>()
                 racesListState.races.map(RaceSummaryUiItem::raceId) shouldBe listOf(
                     "001",
                     "002",
@@ -185,8 +185,8 @@ class NextRacesVieModelTest {
             constructSut()
 
             sut.nextRacesUiStateFlow.test {
-                val racesListState = awaitItem().racesListState
-                racesListState.shouldBeInstanceOf<RacesListState.Success>()
+                val racesListState = awaitItem().raceListState
+                racesListState.shouldBeInstanceOf<RaceListState.Success>()
                 racesListState.races.map { it.raceId } shouldBe listOf(
                     "003",
                     "004",
@@ -261,8 +261,8 @@ class NextRacesVieModelTest {
             sut.selectCategories(listOf("id-Horse", "id-GreyHound", "id-Harness"))
 
             sut.nextRacesUiStateFlow.test {
-                val racesListState = awaitItem().racesListState
-                racesListState.shouldBeInstanceOf<RacesListState.Success>()
+                val racesListState = awaitItem().raceListState
+                racesListState.shouldBeInstanceOf<RaceListState.Success>()
                 racesListState.races.map { it.raceId } shouldBe listOf(
                     "003",
                     "006",
@@ -292,8 +292,8 @@ class NextRacesVieModelTest {
         syncCurrentTimeSecondsDispatcher.scheduler.advanceTimeBy(1001)
 
         sut.nextRacesUiStateFlow.test {
-            val racesListState = awaitItem().racesListState
-            racesListState.shouldBeInstanceOf<RacesListState.Success>()
+            val racesListState = awaitItem().raceListState
+            racesListState.shouldBeInstanceOf<RaceListState.Success>()
             racesListState.races.first().countdownTime shouldBe "-21s"
         }
     }
