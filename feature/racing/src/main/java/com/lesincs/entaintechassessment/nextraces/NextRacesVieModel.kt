@@ -1,4 +1,4 @@
-package com.lesincs.entaintechassessment
+package com.lesincs.entaintechassessment.nextraces
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

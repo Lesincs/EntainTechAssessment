@@ -1,4 +1,4 @@
-package com.lesincs.entaintechassessment
+package com.lesincs.entaintechassessment.nextraces
 
 import javax.inject.Inject
 

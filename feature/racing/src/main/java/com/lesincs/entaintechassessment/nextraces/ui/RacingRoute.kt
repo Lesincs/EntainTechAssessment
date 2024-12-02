@@ -1,4 +1,4 @@
-package com.lesincs.entaintechassessment
+package com.lesincs.entaintechassessment.nextraces.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,6 +29,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.util.fastForEach
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.lesincs.entaintechassessment.nextraces.NextRacesUiState
+import com.lesincs.entaintechassessment.nextraces.NextRacesVieModel
+import com.lesincs.entaintechassessment.R
+import com.lesincs.entaintechassessment.nextraces.RaceSummaryUiItem
+import com.lesincs.entaintechassessment.nextraces.RacesListState
 
 @Composable
 fun RacingRoute(modifier: Modifier = Modifier) {

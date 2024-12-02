@@ -1,4 +1,4 @@
-package com.lesincs.entaintechassessment
+package com.lesincs.entaintechassessment.nextraces
 
 data class NextRacesUiState(
     val racesListState: RacesListState,

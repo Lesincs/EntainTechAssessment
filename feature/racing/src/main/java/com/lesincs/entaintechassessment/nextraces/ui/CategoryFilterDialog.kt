@@ -1,4 +1,4 @@
-package com.lesincs.entaintechassessment
+package com.lesincs.entaintechassessment.nextraces.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.lesincs.entaintechassessment.nextraces.CategoryFilter
+import com.lesincs.entaintechassessment.R
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
