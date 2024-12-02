@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -37,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.min
 import androidx.compose.ui.util.fastForEach
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -192,7 +194,7 @@ private fun Modifier.redDotBadge(enabled: Boolean) = this.drawWithContent {
 @Composable
 private fun RaceSummaryItem(race: RaceSummaryUiItem) {
     ListItem(
-        leadingContent = { Text(race.raceNumber) },
+        leadingContent = { Text(text = race.raceNumber, modifier = Modifier.widthIn(min = 48.dp)) },
         headlineContent = { Text(race.meetingName) },
         trailingContent = { Text(text = race.countdownTime, color = Color(color = 0xFFC02A2B)) },
         supportingContent = { Text(race.raceName) },
@@ -225,7 +227,7 @@ private fun NextRacesScreenPreview_SUCCESS() {
                         ),
                         RaceSummaryUiItem(
                             raceId = "fbadd808-430d-4e5b-9734-da07665cc0f6",
-                            raceNumber = "R6",
+                            raceNumber = "R11",
                             meetingName = "Woodbine Mohawk Park",
                             countdownTime = "1m 20s",
                             raceName = "Race 6 - 1609M",
