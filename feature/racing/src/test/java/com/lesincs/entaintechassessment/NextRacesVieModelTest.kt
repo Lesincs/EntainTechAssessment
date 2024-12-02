@@ -3,6 +3,7 @@ package com.lesincs.entaintechassessment
 import app.cash.turbine.test
 import com.lesincs.entaintechassessment.data.NextRacesRepository
 import com.lesincs.entaintechassessment.data.model.RaceSummary
+import com.lesincs.entaintechassessment.nextraces.Category
 import com.lesincs.entaintechassessment.nextraces.CountdownSecondsFormatter
 import com.lesincs.entaintechassessment.nextraces.CurrentTimeSecondsProvider
 import com.lesincs.entaintechassessment.nextraces.NextRacesVieModel
@@ -79,14 +80,16 @@ class NextRacesVieModelTest {
                         raceName = "Happy Hire Cromwell Cup",
                         raceNumber = "R6",
                         meetingName = "Cromwell",
-                        countdownTime = "-24s"
+                        countdownTime = "-24s",
+                        category = Category.HorseRacing
                     ),
                     RaceSummaryUiItem(
                         raceId = "fbadd808-430d-4e5b-9734-da07665cc0f6",
                         raceName = "Race 6 - 1609M",
                         raceNumber = "R9",
                         meetingName = "Woodbine Mohawk Park",
-                        countdownTime = "25s"
+                        countdownTime = "25s",
+                        category = Category.HarnessRacing
                     )
                 )
             }

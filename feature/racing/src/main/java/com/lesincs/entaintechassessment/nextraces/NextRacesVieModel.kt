@@ -149,7 +149,8 @@ class NextRacesVieModel @Inject constructor(
                 raceName = raceSummary.raceName,
                 raceNumber = "R${raceSummary.raceNumber}",
                 meetingName = raceSummary.meetingName,
-                countdownTime = countdownTime
+                countdownTime = countdownTime,
+                category = Category.entries.firstOrNull { it.id == raceSummary.categoryId }
             )
         }
     }

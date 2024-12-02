@@ -1,11 +1,13 @@
 package com.lesincs.entaintechassessment.nextraces.ui
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterAlt
@@ -39,6 +41,7 @@ import androidx.compose.ui.util.fastForEach
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.lesincs.entaintechassessment.R
+import com.lesincs.entaintechassessment.nextraces.Category
 import com.lesincs.entaintechassessment.nextraces.NextRacesUiState
 import com.lesincs.entaintechassessment.nextraces.NextRacesVieModel
 import com.lesincs.entaintechassessment.nextraces.RaceSummaryUiItem
@@ -193,6 +196,14 @@ private fun RaceSummaryItem(race: RaceSummaryUiItem) {
         headlineContent = { Text(race.meetingName) },
         trailingContent = { Text(text = race.countdownTime, color = Color(color = 0xFFC02A2B)) },
         supportingContent = { Text(race.raceName) },
+        overlineContent = {
+            race.category?.let {
+                Text(
+                    text = it.title,
+                    modifier = Modifier.border(1.dp, Color.Gray, RoundedCornerShape(4.dp)).padding(4.dp)
+                )
+            }
+        }
     )
 }
 
@@ -209,14 +220,16 @@ private fun NextRacesScreenPreview_SUCCESS() {
                             raceNumber = "R2",
                             meetingName = "Cromwell",
                             countdownTime = "50s",
-                            raceName = "Happy Hire Cromwell Cup"
+                            raceName = "Happy Hire Cromwell Cup",
+                            category = Category.HarnessRacing,
                         ),
                         RaceSummaryUiItem(
                             raceId = "fbadd808-430d-4e5b-9734-da07665cc0f6",
                             raceNumber = "R6",
                             meetingName = "Woodbine Mohawk Park",
                             countdownTime = "1m 20s",
-                            raceName = "Race 6 - 1609M"
+                            raceName = "Race 6 - 1609M",
+                            category = Category.HorseRacing
                         )
                     )
                 ),

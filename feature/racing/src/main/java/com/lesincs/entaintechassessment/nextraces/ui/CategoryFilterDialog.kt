@@ -24,7 +24,7 @@ import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.lesincs.entaintechassessment.R
-import com.lesincs.entaintechassessment.nextraces.CategoryFilter
+import com.lesincs.entaintechassessment.nextraces.Category
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -55,7 +55,7 @@ internal fun CategoryFilterDialog(
                         .padding(vertical = 16.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    CategoryFilter.entries.fastForEach { categoryFilter ->
+                    Category.entries.fastForEach { categoryFilter ->
                         FilterChip(
                             modifier = Modifier.padding(4.dp),
                             label = {
