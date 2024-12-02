@@ -5,4 +5,5 @@
     <string name="category_filter_button_text_apply">Apply</string>
     <string name="category_filter_button_text_cancel">Cancel</string>
     <string name="load_failed_click_to_retry">Failed to load races. Tap to retry.</string>
+    <string name="no_races_available_text">No races available at the moment.</string>
 </resources>
