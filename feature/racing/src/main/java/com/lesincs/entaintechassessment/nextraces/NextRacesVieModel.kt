@@ -13,10 +13,12 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -64,10 +66,15 @@ class NextRacesVieModel @Inject constructor(
     private fun refreshNextRacesAutomatically() {
         viewModelScope.launch(updateNextRacesDispatcher) {
             // Update next races only if loaded and a minute has passed.
-            nextRacesUiStateFlow.filter { it.racesListState is RacesListState.Success }
-                .collectLatest {
-                    delay(NEXT_RACES_REFRESH_DELAY_MILLIS)
-                    loadNextRaces()
+            nextRacesUiStateFlow
+                .map { it.racesListState is RacesListState.Success }
+                .distinctUntilChanged()
+                .collectLatest { loadedRacesSucceed ->
+                    if (loadedRacesSucceed) {
+                        Timber.d("Races will be automatically refreshed after $NEXT_RACES_REFRESH_DELAY_MILLIS")
+                        delay(NEXT_RACES_REFRESH_DELAY_MILLIS)
+                        loadNextRaces()
+                    }
                 }
         }
     }

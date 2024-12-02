@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.hilt)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.timber)
 
     kapt(libs.hilt.compiler)
 
