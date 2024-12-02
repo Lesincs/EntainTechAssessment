@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.lesincs.entaintechassessment.nextraces.CategoryFilter
 import com.lesincs.entaintechassessment.R
+import com.lesincs.entaintechassessment.nextraces.CategoryFilter
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -51,7 +51,8 @@ internal fun CategoryFilterDialog(
                 )
                 FlowRow(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     CategoryFilter.entries.fastForEach { categoryFilter ->

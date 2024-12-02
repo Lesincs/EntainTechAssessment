@@ -24,15 +24,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.lesincs.entaintechassessment.R
 import com.lesincs.entaintechassessment.nextraces.NextRacesUiState
 import com.lesincs.entaintechassessment.nextraces.NextRacesVieModel
-import com.lesincs.entaintechassessment.R
 import com.lesincs.entaintechassessment.nextraces.RaceSummaryUiItem
 import com.lesincs.entaintechassessment.nextraces.RacesListState
 
@@ -137,19 +140,33 @@ private fun NextRaceAppBar(
             Text(text = stringResource(R.string.title_next_races))
         },
         actions = {
-            val imageVector = if (selectedCategoryIds.isEmpty()) {
-                Icons.Filled.FilterAltOff
-            } else {
+            val filterApplied = selectedCategoryIds.isNotEmpty()
+            val imageVector = if (filterApplied) {
                 Icons.Filled.FilterAlt
+            } else {
+                Icons.Filled.FilterAltOff
             }
             IconButton(onClick = onFilterClick) {
                 Icon(
+                    modifier = Modifier.redDotBadge(filterApplied),
                     imageVector = imageVector,
                     contentDescription = null
                 )
             }
         }
     )
+}
+
+private fun Modifier.redDotBadge(enabled: Boolean) = this.drawWithContent {
+    drawContent()
+    if (enabled) {
+        val radius = 15f
+        drawCircle(
+            color = Color.Red,
+            radius = radius,
+            center = Offset(this.size.width - radius, radius),
+        )
+    }
 }
 
 @Composable
