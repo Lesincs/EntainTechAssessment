@@ -27,16 +27,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.util.fastForEach
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun RacingRoute(modifier: Modifier = Modifier) {
+    val nextRacesVieModel: NextRacesVieModel = viewModel<NextRacesVieModel>()
+    val nextRacesUiState = nextRacesVieModel.nextRacesUiStateFlow.collectAsStateWithLifecycle().value
     NextRacesScreen(
-        nextRacesUiState = NextRacesUiState(
-            racesListState = RacesListState.Loading,
-            selectedCategoryIds = emptyList()
-        ),
-        onSelectedCategoryIdsApply = {},
-        reloadRaces = {},
+        nextRacesUiState = nextRacesUiState,
+        onSelectedCategoryIdsApply = nextRacesVieModel::selectCategories,
+        reloadRaces = nextRacesVieModel::loadNextRaces,
         modifier = modifier
     )
 }

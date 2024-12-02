@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lesincs.entaintechassessment.data.NextRacesRepository
 import com.lesincs.entaintechassessment.data.model.RaceSummary
+import com.lesincs.entaintechassessment.di.MainDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
@@ -23,8 +24,8 @@ class NextRacesVieModel @Inject constructor(
     private val nextRacesRepository: NextRacesRepository,
     private val currentTimeSecondsProvider: CurrentTimeSecondsProvider,
     private val countdownSecondsFormatter: CountdownSecondsFormatter,
-    private val syncCurrentTimeSecondsDispatcher: CoroutineDispatcher,
-    private val updateNextRacesDispatcher: CoroutineDispatcher,
+    @MainDispatcher private val syncCurrentTimeSecondsDispatcher: CoroutineDispatcher,
+    @MainDispatcher private val updateNextRacesDispatcher: CoroutineDispatcher,
 ) : ViewModel() {
 
     private val nextRacesLoadingStatusStateFlow: MutableStateFlow<LoadingStatus> =

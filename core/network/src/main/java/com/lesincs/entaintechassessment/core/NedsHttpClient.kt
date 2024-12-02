@@ -22,7 +22,8 @@ internal fun getNedsHttpClient(): HttpClient = HttpClient(CIO) {
             Json {
                 ignoreUnknownKeys = true
                 isLenient = true
-            }
+            },
+            contentType = ContentType.Any
         )
     }
 

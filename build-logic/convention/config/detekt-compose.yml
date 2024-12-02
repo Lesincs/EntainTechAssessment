@@ -124,6 +124,6 @@ Compose:
     # -- You can optionally add an allowlist for ViewModel/StateHolder names that won't be affected by this rule
     # allowedForwardingOfTypes: PotatoViewModel,(Apple|Banana)ViewModel,.*FancyViewModel
   ViewModelInjection:
-    active: true
+    active: false
     # -- You can optionally add your own ViewModel factories here
     # viewModelFactories: hiltViewModel,potatoViewModel

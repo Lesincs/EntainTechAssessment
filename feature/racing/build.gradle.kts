@@ -36,6 +36,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.material.icon.extended)
     implementation(libs.hilt)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     kapt(libs.hilt.compiler)
 
